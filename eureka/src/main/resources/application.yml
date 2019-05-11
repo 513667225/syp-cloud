@@ -1,0 +1,14 @@
+server:
+  port: 5000
+eureka:
+  server:
+    enable-self-preservation: false   #自我保护机制的开启与关闭
+    eviction-interval-timer-in-ms: 4000  #设置eureka清理时间间隔  默认60*1000 毫秒
+  instance:
+    hostname: localhost
+
+  client:
+    registerWithEureka: false #不把自己作为一个客户端注册到自己身上
+    fetchRegistry: false  #不需要从服务端获取注册信息（因为在这里自己就是服务端，而且已经禁用自己注册了）
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/   #注册中心地址
